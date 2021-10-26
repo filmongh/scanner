@@ -5,45 +5,47 @@ QrScanner.WORKER_PATH = "./libs/qr-scanner-worker.min.js";
 const getUrlParams = () => {
   let urlString = window.location.href;
   let url = new URL(urlString);
-  let userId = url.searchParams.get("id");
+  let id = url.searchParams.get("id");
 
-  return userId;
+  return id;
 };
 
 const getUrlParams1 = () => {
   let urlString = window.location.href;
   let url = new URL(urlString);
-  let storeId = url.searchParams.get("store");
+  let store = url.searchParams.get("store");
 
-  return storeId;
+  return store;
 };
 
 localStorage.setItem("user", getUrlParams());
 localStorage.setItem("store", getUrlParams1());
 
 
-let username = 'user';
+let user = window.localStorage.user;
 
 // Set a Cookie user
 function setCookie(cName, cValue, expDays) {
         let date = new Date();
         date.setTime(date.getTime() + (expDays * 24 * 60 * 60 * 1000));
         const expires = "expires=" + date.toUTCString();
-        document.cookie = cName + "=" + window.localStorage.user + "; " + expires + "; path=/";
+        document.cookie = cName + "=" + user + "; " + expires + "; path=/";
 }
 
 // Apply setCookie
-setCookie('user', username, 30);
+setCookie('user', user, 30);
+
+let store =  window.localStorage.store
 
 function setCookie(cName, cValue, expDays) {
   let date = new Date();
   date.setTime(date.getTime() + (expDays * 24 * 60 * 60 * 1000));
   const expires = "expires=" + date.toUTCString();
-  document.cookie = cName + "=" + window.localStorage.store + "; " + expires + "; path=/";
+  document.cookie = cName + "=" + store + "; " + expires + "; path=/";
 }
 
 // Apply setCookie
-setCookie('store', username, 30);
+setCookie('store', store, 30);
 
 
 

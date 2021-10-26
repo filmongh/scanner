@@ -50,8 +50,8 @@ setCookie('store', username, 30);
 const onResult = (result) => {
   // const resultEl = document.getElementById("result");
   const resultUrl = new URL(result);
-  resultUrl.searchParams.set("id", localStorage.getItem("userId"));
-
+  resultUrl.searchParams.set("id", localStorage.getItem("user"));
+  resultUrl.searchParams.set("store", localStorage.getItem("store"));
   // resultEl.innerHTML = result;
   // resultEl.href = resultUrl;
 

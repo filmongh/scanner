@@ -13,14 +13,39 @@ const getUrlParams = () => {
 const getUrlParams1 = () => {
   let urlString = window.location.href;
   let url = new URL(urlString);
-  let storeId = url.searchParams.get("storeId");
+  let storeId = url.searchParams.get("store");
 
   return storeId;
 };
 
+localStorage.setItem("user", getUrlParams());
+localStorage.setItem("store", getUrlParams1());
 
-localStorage.setItem("userId", getUrlParams());
-localStorage.setItem("storeId", getUrlParams1());
+
+let username = 'user';
+
+// Set a Cookie user
+function setCookie(cName, cValue, expDays) {
+        let date = new Date();
+        date.setTime(date.getTime() + (expDays * 24 * 60 * 60 * 1000));
+        const expires = "expires=" + date.toUTCString();
+        document.cookie = cName + "=" + window.localStorage.user + "; " + expires + "; path=/";
+}
+
+// Apply setCookie
+setCookie('user', username, 30);
+
+function setCookie(cName, cValue, expDays) {
+  let date = new Date();
+  date.setTime(date.getTime() + (expDays * 24 * 60 * 60 * 1000));
+  const expires = "expires=" + date.toUTCString();
+  document.cookie = cName + "=" + window.localStorage.store + "; " + expires + "; path=/";
+}
+
+// Apply setCookie
+setCookie('store', username, 30);
+
+
 
 const onResult = (result) => {
   // const resultEl = document.getElementById("result");
